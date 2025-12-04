@@ -8,20 +8,13 @@ require_once ('dat/datos.php');
  *  @return true o false
  */
 function userOk($login,$clave):bool {
+global $usuarios;
 
-    if (isset($usuarios[$login])) {
-        if ($usuarios[1] === $clave) {
-        // Credenciales correctas: Establecer la sesión
-         $_SESSION['usuario_codigo'] = $login;
-         $_SESSION['usuario_nombre'] = $usuario_info['nombre'];
-
-         return true;
-        } else {
-            return false;
-        }
-    }
-} 
-
+if (!isset($usuarios[$login])){
+    return false;
+}
+return $usuarios[$login][1] == $clave;
+}
 
 
 /**
@@ -30,8 +23,9 @@ function userOk($login,$clave):bool {
  *  @return ROL_ALUMNO o ROL_PROFESOR
  */
 function getUserRol($login){
-    
-    return ROL_ALUMNO;
+    global $usuarios;
+
+    return $usuarios[$login][2];
 }
 
 /**
@@ -39,17 +33,33 @@ function getUserRol($login){
  *  @param $codigo: Código del usuario
  *  @return $devuelve una cadena con una tabla html con los resultados 
  */
-function verNotasAlumno($codigo):String{
+function verNotasAlumno($codigo,):String{
     $msg="";
     global $nombreModulos;
     global $notas;
     global $usuarios;
 
-    $msg .= " Bienvenido/a alumno/a: ". "FULANITO";
-    $msg .= "<table>";
+    if(!key_exists($codigo,$notas)){
+
+        return "sin datos para el codigo".$codigo;
+    }
+    $msg .= " Bienvenido/a alumno/a: ". $usuarios[$codigo][0];
+
+    $notasAlumno = $notas[$codigo];
+    $msg .= "<hr><table> ";
     // Completar
-    $msg .= "</table>";
+    $msg .= "<th >Módulo </th><th> Nota </th>";
+        for ($i =0; $i< count($nombreModulos); $i++) {
+        $msg .="<tr>";
+        $msg .="<td>".$nombreModulos[$i]."</td>";
+        $msg .="<td>".$notasAlumno[$i]."</td>";
+        $msg .= "</tr>";
+    }
+        $msg .= "</table>";
+
+
     return $msg;
+
 }
 
 /**
@@ -62,8 +72,22 @@ function verNotaTodas ($codigo): String {
     global $nombreModulos;
     global $notas;
     global $usuarios;
-    $msg .= " Bienvenido Profesor: ". " D. FULATINO";
-    $msg .= "<table>";
+    $msg .= " Bienvenido Profesor: ".$usuarios[$codigo][0];
+    $msg .= "<hr><table>";
+    $msg .= "<th >Nombre </th>";
+    foreach ($nombreModulos as $modulo) {
+        $msg .="<th>$modulo</th>";
+    }
+    foreach ($notas as $codigo => $notasAlumno ){
+        $msg .="<tr>";
+        // Nombre del alumno
+        $msg .="<td>".$usuarios[$codigo][0]."</td>";
+        // Notas del alumno
+        foreach ($notasAlumno as $nota){
+            $msg .="<td style='text-align: right;'>$nota</td>";
+        }
+        $msg .= "</tr>";
+    }
     $msg .= "</table>";
     return $msg;
 }
