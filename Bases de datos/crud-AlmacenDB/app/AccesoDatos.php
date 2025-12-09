@@ -1,5 +1,5 @@
 <?php
-include_once "Usuario.php";
+include_once "Producto.php";
 include_once "config.php";
 
 /*
@@ -46,76 +46,76 @@ class AccesoDatos {
 
 
     // SELECT Devuelvo la lista de Usuarios
-    public function getUsuarios ():array {
-        $tuser = [];
+    public function getProductos ():array {
+        $tprod = [];
         // Crea la sentencia preparada
-        $stmt_usuarios  = $this->dbh->prepare("select * from Usuarios");
+        $stmt_productos  = $this->dbh->prepare("select * from Productos");
         // Si falla termian el programa
-        if ( $stmt_usuarios == false) die (__FILE__.':'.__LINE__.$this->dbh->error);
+        if ( $stmt_productos == false) die (__FILE__.':'.__LINE__.$this->dbh->error);
         // Ejecuto la sentencia
-        $stmt_usuarios->execute();
+        $stmt_productos->execute();
         // Obtengo los resultados
-        $result = $stmt_usuarios->get_result();
+        $result = $stmt_productos->get_result();
         // Si hay resultado correctos
         if ( $result ){
             // Obtengo cada fila de la respuesta como un objeto de tipo Usuario
-            while ( $user = $result->fetch_object('Usuario')){
-               $tuser[]= $user;
+            while ( $produ = $result->fetch_object('Producto')){
+               $tprod[]= $produ;
             }
         }
         // Devuelvo el array de objetos
-        return $tuser;
+        return $tprod;
     }
     
     // SELECT Devuelvo un usuario o false
-    public function getUsuario (String $login) {
-        $user = false;
+    public function getProducto (String $id) {
+        $produ = false;
         
-        $stmt_usuario   = $this->dbh->prepare("select * from Usuarios where login =?");
-        if ( $stmt_usuario == false) die ($this->dbh->error);
+        $stmt_producto   = $this->dbh->prepare("select * from Productos where id =?");
+        if ( $stmt_producto == false) die ($this->dbh->error);
 
         // Enlazo $login con el primer ? 
-        $stmt_usuario->bind_param("s",$login);
-        $stmt_usuario->execute();
-        $result = $stmt_usuario->get_result();
+        $stmt_producto->bind_param("s",$id);
+        $stmt_producto->execute();
+        $result = $stmt_producto->get_result();
         if ( $result ){
-            $user = $result->fetch_object('Usuario');
+            $produ = $result->fetch_object('Producto');
             }
         
-        return $user;
+        return $produ;
     }
     
     // UPDATE
-    public function modUsuario($user):bool{
+    public function modProducto($produ):bool{
       
-        $stmt_moduser   = $this->dbh->prepare("update Usuarios set nombre=?, password=?, comentario=? where login=?");
-        if ( $stmt_moduser == false) die ($this->dbh->error."En la línea:".__LINE__);
+        $stmt_modprodu   = $this->dbh->prepare("update Productos set nombre=?, precio=?, stock=? where id=?");
+        if ( $stmt_modprodu == false) die ($this->dbh->error."En la línea:".__LINE__);
 
-        $stmt_moduser->bind_param("ssss",$user->nombre,$user->password, $user->comentario, $user->login);
-        $stmt_moduser->execute();
+        $stmt_modprodu->bind_param("ssss",$produ->nombre,$produ->precio, $produ->stock, $produ->id);
+        $stmt_modprodu->execute();
         $resu = ($this->dbh->affected_rows  == 1);
         return $resu;
     }
 
     //INSERT
-    public function addUsuario($user):bool{
+    public function addProducto($produ):bool{
        
-        $stmt_creauser  = $this->dbh->prepare("insert into Usuarios (login,nombre,password,comentario) Values(?,?,?,?)");
-        if ( $stmt_creauser == false) die ($this->dbh->error);
+        $stmt_creaprodu  = $this->dbh->prepare("insert into Productos (id,nombre,precio,stock) Values(?,?,?,?)");
+        if ( $stmt_creaprodu == false) die ($this->dbh->error);
 
-        $stmt_creauser->bind_param("ssss",$user->login, $user->nombre, $user->password, $user->comentario);
-        $stmt_creauser->execute();
+        $stmt_creaprodu->bind_param("ssss",$produ->id, $produ->nombre, $produ->precio, $produ->stock);
+        $stmt_creaprodu->execute();
         $resu = ($this->dbh->affected_rows  == 1);
         return $resu;
     }
 
     //DELETE
-    public function borrarUsuario(String $login):bool {
-        $stmt_boruser   = $this->dbh->prepare("delete from Usuarios where login =?");
-        if ( $stmt_boruser == false) die ($this->dbh->error);
+    public function borrarProducto(String $id):bool {
+        $stmt_borrprodu   = $this->dbh->prepare("delete from Productos where id =?");
+        if ( $stmt_borrprodu == false) die ($this->dbh->error);
        
-        $stmt_boruser->bind_param("s", $login);
-        $stmt_boruser->execute();
+        $stmt_borrprodu->bind_param("s", $id);
+        $stmt_borrprodu->execute();
         $resu = ($this->dbh->affected_rows  == 1);
         return $resu;
     }   
