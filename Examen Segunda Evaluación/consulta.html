@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de la Biblioteca</title>
+    <style>
+        body { background-color: #1a3c2e; font-family: sans-serif; color: #d8c3ae; padding: 40px; }
+        table { width: 100%; border-collapse: collapse; background-color: #3e4836; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #d8c3ae; text-align: left; }
+        th { background-color: #2d5742; }
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido Bibliotecario</h1>
+    <h2>Listado de Socios</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nº Usuario</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Libros en Préstamo</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-socios">
+            </tbody>
+    </table>
+
+    <script src="socios.js"></script>
+</body>
+</html>

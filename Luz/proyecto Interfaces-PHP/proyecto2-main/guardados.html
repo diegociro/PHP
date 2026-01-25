@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos_guardados.css">
+    <title>Guardados</title>
+</head>
+<body>
+     <!-- menu despleglable -->
+    <button class="hamburguesa" id="hamburguesa">
+      ☰
+    </button>
+    <nav class="menu" id="menu">
+      <a href="iniciar.html">Iniciar Sesión</a>
+      <a href="index.html">Menú principal</a>
+      <a href="sinopsis.html">Buscar</a>
+      <a href="index.html#mejor_valorados">Mejor valorados</a>
+    </nav>
+    <section>
+        <div><h1>Tus guardados</h1></div>
+    </section>
+    <section>
+        <div class="mejorvalorados2">
+              <div class="fotosvalorados"><img src="imagenes/parasitos.jpg" alt="">
+                <div class="descvalorados">
+                  <p>Parásitos</p>
+                  <p>Genero: Suspenso</p>
+                </div>
+              </div>
+              <div class="fotosvalorados"><img src="imagenes/canto_yo.jpeg" alt="">
+                <div class="descvalorados">
+                  <p>Canto yo y la montaña</p>
+                  <p>Genero: Novela polifónica</p>
+                  
+                </div>
+              </div> 
+              <div class="fotosvalorados"><img src="imagenes/atonement.jpg" alt="">
+              <div class="descvalorados">
+                  <p>Expiación, deseo y pecado</p>
+                  <p>Genero: Romance/Bélico</p>
+               
+                </div>
+              </div>
+              <div class="fotosvalorados"><img src="imagenes/el_nombre.jpg" alt="">
+              <div class="descvalorados">
+                  <p>El Buen Nombre</p>
+                  <p>Genero: Novela</p>
+                  
+                </div>
+              </div>
+          </div>
+    </section>
+    <section>
+        <div><h1>Tus Favoritos</h1></div>
+    </section>
+
+     <section>
+        <div class="mejorvalorados2">
+              <div class="fotosvalorados"><img src="imagenes/parasitos.jpg" alt="">
+                <div class="descvalorados">
+                  <p>Parásitos</p>
+                  <p>Genero: Suspenso</p>
+                </div>
+              </div>
+              <div class="fotosvalorados"><img src="imagenes/canto_yo.jpeg" alt="">
+                <div class="descvalorados">
+                  <p>Canto yo y la montaña</p>
+                  <p>Genero: Novela polifónica</p>
+                  
+                </div>
+              </div> 
+              <div class="fotosvalorados"><img src="imagenes/atonement.jpg" alt="">
+              <div class="descvalorados">
+                  <p>Expiación, deseo y pecado</p>
+                  <p>Genero: Romance/Bélico</p>
+               
+                </div>
+              </div>
+              <div class="fotosvalorados"><img src="imagenes/el_nombre.jpg" alt="">
+              <div class="descvalorados">
+                  <p>El Buen Nombre</p>
+                  <p>Genero: Novela</p>
+                  
+                </div>
+              </div>
+          </div>
+    </section>
+     <script>
+    // interaccion del menu hamburguesa
+    const hamburger = document.getElementById('hamburguesa');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('menu-active');
+    });
+  </script>
+</body>
+</html>

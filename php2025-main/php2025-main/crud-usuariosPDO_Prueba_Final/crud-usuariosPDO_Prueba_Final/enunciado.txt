@@ -1,0 +1,101 @@
+PRUEBA FINAL DE PHP
+
+Queremos hacer una serie de mejoras sobre el CRUD de usuarios que teníamos como ejemplo de la aplicación con acceso BD mediante PDO. Para ello vamos a cambiar la BD usuarios por usuariosctl donde se incluyen dos nuevos campos: saldo y bloqueo.
+
+
+CREATE TABLE `Usuarios` (
+  `login` varchar(10) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `comentario` varchar(30) NOT NULL,
+  `bloqueo` int NOT NULL,
+  `saldo` decimal(8,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+INSERT INTO `Usuarios` (`login`, `nombre`, `password`, `comentario`, `bloqueo`, `saldo`) VALUES
+('2r34', 'Ramón Rodriguez', '309403sk', 'Programador Junior', 0, '19.06'),
+('9389', 'Silvia Pérez  Pio', 'o3o3o3', 'Analista JR2dd', 1, '73.37'),
+('fernan', 'Fernando Pérez 3', '12345', 'SysADM & DB manager', 1, '148.50'),
+('sad', 'Silvia Ana', 'sdsad12312', 'Jefe de proyectos', 0, '5.10');
+
+ALTER TABLE `Usuarios`
+  ADD PRIMARY KEY (`login`);
+COMMIT;
+
+
+
+Realizamos los siguientes cambios
+(2 Puntos)
+1º Modificamos la clase Usuario.php según la nueva entidad de la BD y la función de mostrarDatos para que también incluya los dos nuevos campos, más un checkbox para poder seleccionar uno o varios usuarios. En el vista principal incluimos dos nuevos botones:Incrementar saldo y Actualizar Bloqueos con el parámetro name=’orden’
+
+
+
+Hay que cambiar principal.php: <form> tiene que estar antes del $contenido para qu se envíen los checkbox, para que los datos estén incluídos en el formulario.
+
+
+(3 Puntos)
+2º Controlamos el acceso mediante la existencia de una variable de sesión,  solicitando un pin de acceso mediante un formulario (formulariopin.php).  El valor introducido por el usuario debe ser  12345, para que la aplicación muestre el listado anterior. Si el pin no es correcto se volverá a solicitar de nuevo.
+
+
+
+ 
+
+El acceso solo se concede durante 5 minutos, pasado ese tiempo  se borrará la sesión, solicitando de nuevo el pin. Si el usuario pulsa Terminar también se cerrará la sesión volviendo a  mostrar el formulario que solicita el pin de acceso.
+
+(2.5 Puntos)
+3º Procesar la orden Incrementar Saldo,  incrementa un 10% el valor del saldo de los usuarios marcados volviendo a mostrar los datos actualizados.
+
+(2.5 Puntos)
+4ºProcesar la orden Actualizar Bloqueos, cambia el estado de todos los bloqueos de los usuarios según los valores marcados en la tabla de checkbox y volviendo a mostrar la tabla con los datos actualizados.
+
+
+Consultar la solución planteada por el profesor
+
+
+
+
+
+
+
+
+
+///////////////////////Btw hay un cambio que casi no se nota, en un formulario poner el <form antes que el $contenido para que de envíe la checklist///////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Modelo inicial: crud-usuariosPDO
+
+
+
+Base de Datos inicial:
+
+
+CREATE TABLE `Usuarios` (
+`login` varchar(10) NOT NULL,
+`nombre` varchar(20) NOT NULL,
+`password` varchar(20) NOT NULL,
+`comentario` varchar(30) NOT NULL,
+`bloqueo` int NOT NULL,
+`saldo` decimal(8,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+ 
+INSERT INTO `Usuarios` (`login`, `nombre`, `password`, `comentario`, `bloqueo`, `saldo`) VALUES
+('2r34', 'Ramón Rodriguez', '309403sk', 'Programador Junior', 0, '19.06'),
+('9389', 'Silvia Pérez Pio', 'o3o3o3', 'Analista JR2dd', 1, '73.37'),
+('fernan', 'Fernando Pérez 3', '12345', 'SysADM & DB manager', 1, '148.50'),
+('sad', 'Silvia Ana', 'sdsad12312', 'Jefe de proyectos', 0, '5.10');
+ 
+ALTER TABLE `Usuarios`
+ADD PRIMARY KEY (`login`);

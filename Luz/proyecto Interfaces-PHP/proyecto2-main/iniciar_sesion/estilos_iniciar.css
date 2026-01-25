@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+    font-family: "Georgia", serif;
+    background-image: url(../imagenes/imagen_indice1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#volvermenu {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: rgb(88, 15, 15);
+    border-radius: 20px;
+    width: 50px;
+    right: 100px;
+}
+#volvermenu img {
+    width: 100%;
+}
+
+.grid {
+    display: flex;
+    background-color: rgba(39, 58, 38, 0.575);
+    padding: 30px;
+    justify-items: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+h1 {
+    text-shadow: 4px 8px 7px rgba(0, 0, 0, 0.6);
+    color: rgb(255, 180, 180);
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    font-weight: 400;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.inputs div {
+  text-align: center;  
+  font-size: 30px;  
+  
+}
+.inputs input {
+    width: 40vh;
+    height: 5vh;
+    margin: 10px;
+    border: none;
+    border-radius: 3px;
+    padding: 25px;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: #ffffff ;
+    margin: 10px;
+}
+
+#enlace {
+    color: #ffffff;
+}
+
+p {
+    text-align: center;
+    padding: 30px;
+}
+
+.iniciecon {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    color: #ffffff;
+}
+
+.boton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#boton {
+    box-shadow: 4px 8px 7px rgba(0, 0, 0, 0.6);
+    background-color: rgb(198, 133, 133);
+    border: none;
+    border-radius: 16%;
+    height: 70px;
+    width: 30%;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+
+#boton:hover {
+  transform: scale(1.05);
+}
+
+.imagenes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    margin-left: 10px ;
+    padding: 10px;
+    
+}
+.imagenes img {
+    background-color: rgb(198, 133, 133);
+    border-radius: 10px;
+    width: 60px;
+    gap: 50px;
+    padding: 10px;
+    margin: 20px;
+    cursor: pointer;
+    box-shadow: 4px 8px 7px rgba(0, 0, 0, 0.6);
+}
+
+.imagenes img:hover {
+  transform: scale(1.05);
+}
+
+.no a {
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+}

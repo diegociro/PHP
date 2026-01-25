@@ -1,0 +1,104 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: "Open Sans", sans-serif;
+}
+
+body  {
+    background-color: rgb(219, 180, 134);
+}
+
+.hamburguesa {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #7a1b1b;
+  color: #fff;
+  border: none;
+  font-size: 1.8rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+/*  transition: background 0.3s ease;*/
+}
+
+.hamburguesa:hover {
+  background: #a05a44;
+}
+
+.menu {
+  position: fixed;
+  top: 60px;
+  right: 1rem;
+  background: #7a1b1b;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-direction: column;
+  display: none;
+  z-index: 9;
+}
+
+.menu a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.menu a:hover {
+  background: #a05a44;
+}
+
+/* Menú activo */
+.menu.menu-active {
+  display: flex;
+}
+
+h1 {
+  padding: 30px;
+}
+
+
+.mejorvalorados2 {
+    /* position: relative;
+    top: -120px; */
+    display: flex;
+    z-index: 6;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    background-color: #7a1b1b79;
+    padding: 20px;
+}
+
+.usuarios {
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+  color: #524343;
+  font-size: 20px;
+}
+
+
+.fotosvalorados {
+  max-width: 15%;
+  min-width: 20%;
+  padding: 5px 5px 10px 5px;
+  background-color: rgb(245, 239, 212);
+}
+
+.fotosvalorados img {
+  width: 100%;
+}
+
+.descvalorados {
+  font-size: 1rem;
+}
+.sinop {
+  padding-top: 5px;
+  text-align: center;
+}
