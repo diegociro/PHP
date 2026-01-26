@@ -40,7 +40,7 @@ $misFavoritos = $db->mostrarFav($_SESSION['usuario']);
      <?php if (count($misFavoritos) > 0): ?> <!-- Comprobamos que haya al menos uno  -->
          <?php foreach ($misFavoritos as $favi): ?>
         <div class="fotosvalorados">
-      <a href="romancepareja.php?id=<?= $favi->id ?>">
+      <a href="romancepareja.php?id=<?= $favi->id ?>"> <!-- así la imagen mandará a la pagina de la relacion -->
       <img src="<?= $favi->imagen ?>" alt="<?= $favi->titulo ?>">
      </a>
 <div class="descvalorados">
